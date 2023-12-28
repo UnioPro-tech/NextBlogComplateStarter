@@ -1,6 +1,18 @@
-import { AppProps } from 'next/app'
-import '../styles/index.css'
+import React from 'react'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import usePageView from '../hooks/usePageView'
+import GoogleAnalytics from '../components/GoogleAnalytics'
+
+const App = ({ Component, pageProps }) => {
+  usePageView() // 追加
+
+  return (
+    <>
+      <GoogleAnalytics />
+
+      <Component {...pageProps} />
+    </>
+  )
 }
+
+export default App
