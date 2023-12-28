@@ -1,9 +1,18 @@
-import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import Head from "next/head";
+import { CMS_NAME, HOME_OG_IMAGE_URL } from "../lib/constants";
 
 const Meta = () => {
   return (
     <Head>
+      {/*Google tag (gtag.js)*/}
+      {`<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZR9JVPWMG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TZR9JVPWMG');
+</script>`}
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -32,13 +41,10 @@ const Meta = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="description"
-        content={`The digital club's Blog.`}
-      />
+      <meta name="description" content={`The digital club's Blog.`} />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
-  )
-}
+  );
+};
 
-export default Meta
+export default Meta;
