@@ -1,20 +1,26 @@
-import React from 'react'
+import { GA_TRACKING_ID, pageview } from '../lib/gtag';
+import { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-import usePageView from '../hooks/usePageView'
-import GoogleAnalytics from '../components/GoogleAnalytics'
+import "../styles/index.css"
 
-import '../styles/index.css'
+export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  const router = useRouter();
 
-const App = ({ Component, pageProps }) => {
-  usePageView() // 追加
+  // useEffectでurlの動きを検知
+  useEffect(() => {
+    // GA_TRACKING_ID が設定されていない場合は、return
+    if (!GA_TRACKING_ID) return;
 
-  return (
-    <>
-      <GoogleAnalytics />
+    const handleRouteChange = (url: string) => {
+      pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
-      <Component {...pageProps} />
-    </>
-  )
+  return <Component {...pageProps} />;
 }
-
-export default App
