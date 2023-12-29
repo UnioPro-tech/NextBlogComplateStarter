@@ -32,7 +32,7 @@ const Meta = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="description" content={`The digital club's Blog.`} />
+      <meta name="description" content={`全国ネットのデジタルサークル、UniProのHP兼ブログです！`} />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
   );
