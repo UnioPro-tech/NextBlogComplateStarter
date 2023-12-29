@@ -3,7 +3,7 @@
 module.exports = {
   // ビルド後の出力ディレクトリの設定
   distDir: "out",
-  output: 'export', 
+  //output: 'export', 
 
   // クライアントサイドでのWebpackの設定
   webpack5: true,
