@@ -17,7 +17,7 @@ const Footer = () => {
               エントリーページへ
             </a>
             <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+              href={`https://github.com/UniPro-tech`}
               className="mx-3 font-bold hover:underline"
             >
               GitHubへ

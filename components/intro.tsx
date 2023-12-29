@@ -7,7 +7,7 @@ const Intro = () => {
         UniPro
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-        The digital club's Blog.
+        The all-Japan digital club.
       </h4>
     </section>
   )
