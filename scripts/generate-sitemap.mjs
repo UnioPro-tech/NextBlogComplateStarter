@@ -32,9 +32,9 @@ const generateSitemapXml = (posts) => {
   });
 
   let url = root.ele("url");
-  url.ele("loc", `https://unipro-tech.github.io`);
+  url.ele("loc", `https://unipro-tech.github.io/`);
   url.ele("lastmod", posts[posts.length - 1].date);
-  url.ele("priority", "0.8");
+  url.ele("priority", "1.0");
 
   return root.end({ pretty: true });
 };
