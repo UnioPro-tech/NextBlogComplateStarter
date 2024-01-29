@@ -36,6 +36,9 @@
  "typo:")
  emoji=":pencil2:"
  ;;
+ "revert:" | "Revert")
+ emoji=":rewind:"
+ ;;
  *)
  echo "The specified prefix is undefined.";
  exit 1
