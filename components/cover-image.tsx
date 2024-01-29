@@ -20,7 +20,6 @@ const CoverImage = ({ title, src, slug, nolazy }: Props) => {
       priority={nolazy}
       width={1300}
       height={630}
-      sizes={'(max-width: 600px) 400px, (max-width: 960px) 800px, 1200px'}
     />
   )
   return (
