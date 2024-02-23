@@ -1,10 +1,10 @@
-import Container from "../components/container";
-import Layout from "../components/layout";
+import Container from "@/components/container";
+import Layout from "@/components/layout";
 import Head from "next/head";
-import Header from "../components/header";
-import PostBody from "../components/post-body";
-import { SpecialPageHeader } from "../components/post-header";
-import OGP from "../components/ogp";
+import Header from "@/components/header";
+import PostBody from "@/components/post-body";
+import { SpecialPageHeader } from "@/components/post-header";
+import OGP from "@/components/ogp";
 
 const About = () => {
   return (

@@ -1,16 +1,17 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
-import PostBody from "../../components/post-body";
-import Header from "../../components/header";
-import PostHeader from "../../components/post-header";
-import Layout from "../../components/layout";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
-import PostTitle from "../../components/post-title";
+import Container from "@/components/container";
+import PostBody from "@/components/post-body";
+import Header from "@/components/header";
+import PostHeader from "@/components/post-header";
+import Layout from "@/components/layout";
+import { getPostBySlug, getAllPosts } from "@/lib/api";
+import PostTitle from "@/components/post-title";
 import Head from "next/head";
-import OGP from "../../components/ogp";
-import markdownToHtml from "../../lib/markdownToHtml";
-import type PostType from "../../interfaces/post";
+import OGP from "@/components/ogp";
+import markdownToHtml from "@/lib/markdownToHtml";
+import type PostType from "@/interfaces/post";
+import { TITLE } from "@/config";
 
 type Props = {
   post: PostType;
@@ -20,7 +21,7 @@ type Props = {
 
 export default function Post({ post, morePosts, preview }: Props) {
   const router = useRouter();
-  const title = `${post.title} | UniPro's Blog`;
+  const title = `${post.title} | ${TITLE}`;
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -37,7 +38,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                 <Head>
                   <title>{title}</title>
                 </Head>
-                <OGP url={post.ogImage.url}/>
+                <OGP url={post.ogImage.url} />
                 <PostHeader
                   title={post.title}
                   coverImage={post.coverImage}
