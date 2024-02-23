@@ -5,9 +5,9 @@ import Intro from "../components/intro";
 import Layout from "../components/layout";
 import { getAllPosts } from "../lib/api";
 import Head from "next/head";
-import { CMS_NAME } from "../lib/constants";
 import Post from "../interfaces/post";
 import { IndexHeader } from "../components/header";
+import OGP from "../components/ogp";
 
 type Props = {
   allPosts: Post[];
@@ -22,9 +22,10 @@ export default function Index({ allPosts }: Props) {
         <Head>
           <title>{`UniPro - 全国ネットのデジタルサークル！`}</title>
         </Head>
+        <OGP />
         <Container>
           <Intro />
-          <IndexHeader/>
+          <IndexHeader />
           {heroPost && (
             <HeroPost
               title={heroPost.title}

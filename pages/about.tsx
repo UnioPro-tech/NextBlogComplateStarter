@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../components/header";
 import PostBody from "../components/post-body";
 import { SpecialPageHeader } from "../components/post-header";
+import OGP from "../components/ogp";
 
 const About = () => {
   return (
@@ -12,10 +13,15 @@ const About = () => {
         <Head>
           <title>About | UniPro</title>
         </Head>
+        <OGP />
         <Container>
           <Header />
           <article className="mb-32">
-            <SpecialPageHeader title="UniProについて" coverImage="/default/ogp/ogp.webp" date="2024-02-04T10:05:20.322Z" />
+            <SpecialPageHeader
+              title="UniProについて"
+              coverImage="/default/ogp/ogp.webp"
+              date="2024-02-04T10:05:20.322Z"
+            />
             <PostBody
               content="
             <h2>UniProとは</h2>
