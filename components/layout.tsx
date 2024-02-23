@@ -1,6 +1,7 @@
 import Alert from './alert'
 import Footer from './footer'
 import Meta from './meta'
+import Comment from './giscus'
 
 type Props = {
   preview?: boolean
@@ -15,6 +16,7 @@ const Layout = ({ preview, children }: Props) => {
         <Alert preview={preview} />
         <main>{children}</main>
       </div>
+      <Comment />
       <Footer />
     </>
   )
