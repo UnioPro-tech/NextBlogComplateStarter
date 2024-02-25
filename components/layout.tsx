@@ -1,11 +1,10 @@
-import Footer from './footer'
-import Meta from './meta'
-import Comment from './giscus'
+import Footer from "./footer";
+import Meta from "./meta";
 
 type Props = {
-  preview?: boolean
-  children: React.ReactNode
-}
+  preview?: boolean;
+  children: React.ReactNode;
+};
 
 const Layout = ({ preview, children }: Props) => {
   return (
@@ -14,10 +13,9 @@ const Layout = ({ preview, children }: Props) => {
       <div className="min-h-screen">
         <main>{children}</main>
       </div>
-      <Comment />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

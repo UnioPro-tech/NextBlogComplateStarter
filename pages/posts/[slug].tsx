@@ -12,6 +12,7 @@ import OGP from "@/components/ogp";
 import markdownToHtml from "@/lib/markdownToHtml";
 import type PostType from "@/interfaces/post";
 import { TITLE } from "@/config";
+import Comment from "@/components/giscus";
 
 type Props = {
   post: PostType;
@@ -50,6 +51,7 @@ export default function Post({ post, morePosts, preview }: Props) {
             </>
           )}
         </Container>
+        <Comment />
       </Layout>
     </>
   );
