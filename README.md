@@ -1,5 +1,5 @@
 # Next.js Blog Complate Starter
-[![GitHub release](https://img.shields.io/github/release/yuito-it/NextBlogComplateStarter.svg)](https://GitHub.comyuito-it/NextBlogComplateStarter/releases/)
+[![GitHub release](https://img.shields.io/github/release/yuito-it/NextBlogComplateStarter.svg)](https://GitHub.com/yuito-it/NextBlogComplateStarter/releases/)
 
 ## Notes
 
