@@ -20,9 +20,10 @@ type Props = {
   preview?: boolean;
 };
 
-export default function Post({ post, morePosts, preview }: Props) {
+export default function Post({ post, preview }: Props) {
   const router = useRouter();
   const title = `${post.title} | ${TITLE}`;
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -39,7 +40,7 @@ export default function Post({ post, morePosts, preview }: Props) {
                 <Head>
                   <title>{title}</title>
                 </Head>
-                <OGP url={post.ogImage.url} />
+                {post.ogImage && <OGP url={post.ogImage.url} />}
                 <PostHeader
                   title={post.title}
                   coverImage={post.coverImage}
@@ -73,6 +74,11 @@ export async function getStaticProps({ params }: Params) {
     "ogImage",
     "coverImage",
   ]);
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
   const content = await markdownToHtml(post.content || "");
   return {
     props: {

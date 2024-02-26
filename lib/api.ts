@@ -63,7 +63,12 @@ export function getAllSpecials(fields: string[] = []) {
 export function getSpecialBySlug(slug: string, fields: string[] = []) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(specialDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
+  let fileContents;
+  try {
+    fileContents = fs.readFileSync(fullPath, "utf8");
+  } catch {
+    return;
+  }
   const { data, content } = matter(fileContents);
 
   type Items = {
