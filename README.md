@@ -19,4 +19,4 @@ $ ./colab_script.sh
 ## Notes
 
 - [`blog-starter`](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) uses [Tailwind CSS](https://tailwindcss.com) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3).
-- [`giscus`] - GitHub pages comment system.
+- [`giscus`](https://giscus.app) - GitHub pages comment system.
