@@ -1,4 +1,4 @@
-import { GA_ID } from "@/config.js";
+import { GA_ID } from "@/config";
 
 export const GA_TRACKING_ID = GA_ID;
 
