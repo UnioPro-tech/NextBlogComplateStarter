@@ -10,3 +10,4 @@ export const repoId = "R_kgDOLW2HCg";
 export const category = "Giscus Comments";
 export const categoryId = "DIC_kwDOLW2HCs4Cdu4f";
 export const mapping = "title";
+export const GA_ID = "G-TZR9JVPWMG";
