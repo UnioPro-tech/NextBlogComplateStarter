@@ -15,7 +15,9 @@ jobs:
           ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Version Get
-        run: echo "NPM_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
         uses: actions/checkout@v4
@@ -23,7 +25,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
-        run: echo "NPM_NEW_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
 
       - name: Update Version
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
@@ -44,7 +48,9 @@ jobs:
           ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Version Get
-        run: echo "NPM_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
         uses: actions/checkout@v4
@@ -52,7 +58,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
-        run: echo "NPM_NEW_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
 
       - name: Update Version
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
@@ -73,7 +81,9 @@ jobs:
           ref: ${{ github.event.pull_request.base.ref }}
 
       - name: Version Get
-        run: echo "NPM_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
         uses: actions/checkout@v4
@@ -81,7 +91,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
-        run: echo "NPM_NEW_VERSION=$(node -e \"console.log(require('./package.json').version)\")" >> $GITHUB_ENV
+        run: |
+          NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
+          printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
 
       - name: Update Version
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
