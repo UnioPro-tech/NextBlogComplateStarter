@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          NPM_NEWER_VERSION=$(npm version patch)
+          npm version patch
           echo "After npm version: $(node -e \"console.log(require('./package.json').version)\")"
 
       - name: Commit changes
