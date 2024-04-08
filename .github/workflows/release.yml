@@ -32,9 +32,9 @@ jobs:
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         run: |
-          npm version patch
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
+          npm version patch
 
       - name: Commit changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -75,9 +75,10 @@ jobs:
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         run: |
-          npm version minor
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
+          npm version minor
+          
 
       - name: Commit changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -118,9 +119,10 @@ jobs:
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         run: |
-          npm version major
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
+          npm version major
+          
 
       - name: Commit changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
