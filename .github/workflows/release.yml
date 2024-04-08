@@ -31,75 +31,19 @@ jobs:
 
       - name: Update Version
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
-        run: npm version patch
-
-      - name: Push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push -u origin ${{ github.event.pull_request.head.ref }}
-
-  Minor:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' || contains(github.event.pull_request.labels[*].name, 'minor') }}
-    steps:
-      - name: Checkout Base Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.base.ref }}
-
-      - name: Version Get
         run: |
-          NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
-          printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
+          npm version patch
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
 
-      - name: Checkout PR Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - name: Version Get
-        run: |
-          NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
-          printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Update Version
+      - name: Commit changes
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
-        run: npm version minor
-
-      - name: Push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push -u origin ${{ github.event.pull_request.head.ref }}
-
-  Major:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' || contains(github.event.pull_request.labels[*].name, 'major') }}
-    steps:
-      - name: Checkout Base Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.base.ref }}
-
-      - name: Version Get
         run: |
-          NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
-          printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
+          git commit -am "Bump version to $NPM_NEW_VERSION"
 
-      - name: Checkout PR Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - name: Version Get
-        run: |
-          NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
-          printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Update Version
+      - name: Push changes
         if: ${{ env.NPM_VERSION != env.NPM_NEW_VERSION }}
-        run: npm version major
-
-      - name: Push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push -u origin ${{ github.event.pull_request.head.ref }}
+        run: |
+          git push -u origin ${{ github.event.pull_request.head.ref }}
