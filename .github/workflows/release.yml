@@ -20,9 +20,7 @@ jobs:
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        run: git checkout ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
@@ -58,9 +56,7 @@ jobs:
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        run: git checkout ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
@@ -96,9 +92,7 @@ jobs:
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
       - name: Checkout PR Branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
+        run: git checkout ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
