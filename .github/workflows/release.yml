@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push -u origin ${{ github.event.pull_request.head.ref }}
+          git push -u -f origin ${{ github.event.pull_request.head.ref }}
 
   Minor:
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push -u origin ${{ github.event.pull_request.head.ref }}
+          git push -u -f origin ${{ github.event.pull_request.head.ref }}
 
   Major:
     runs-on: ubuntu-latest
@@ -123,4 +123,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git push -u origin ${{ github.event.pull_request.head.ref }}
+          git push -u -f origin ${{ github.event.pull_request.head.ref }}
