@@ -29,9 +29,7 @@ jobs:
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
           
       - name: Automatic Rebase
-        uses: cirrus-actions/rebase@1.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/rebase@v3
       
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -71,9 +69,7 @@ jobs:
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
 
       - name: Automatic Rebase
-        uses: cirrus-actions/rebase@1.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+        uses: peter-evans/rebase@v3
 
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -113,9 +109,7 @@ jobs:
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
       
       - name: Automatic Rebase
-        uses: cirrus-actions/rebase@1.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/rebase@v3
 
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
