@@ -19,8 +19,9 @@ jobs:
           NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
-      - name: Checkout PR Branch
-        run: git checkout ${{ github.event.pull_request.head.ref }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
@@ -55,8 +56,9 @@ jobs:
           NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
-      - name: Checkout PR Branch
-        run: git checkout ${{ github.event.pull_request.head.ref }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
@@ -91,8 +93,9 @@ jobs:
           NPM_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_VERSION=%s" "$NPM_VERSION" >> $GITHUB_ENV
 
-      - name: Checkout PR Branch
-        run: git checkout ${{ github.event.pull_request.head.ref }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Version Get
         run: |
