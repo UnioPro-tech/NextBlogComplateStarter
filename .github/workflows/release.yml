@@ -27,7 +27,12 @@ jobs:
         run: |
           NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
-
+          
+      - name: Rebase
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git rebase ${{ github.event.pull_request.base.ref }}
+      
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         run: |
@@ -65,6 +70,11 @@ jobs:
           NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
 
+      - name: Rebase
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git rebase ${{ github.event.pull_request.base.ref }}
+
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         run: |
@@ -101,6 +111,11 @@ jobs:
         run: |
           NPM_NEW_VERSION=$(node -e "console.log(require('./package.json').version)")
           printf "NPM_NEW_VERSION=%s" "$NPM_NEW_VERSION" >> $GITHUB_ENV
+      
+      - name: Rebase
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git rebase ${{ github.event.pull_request.base.ref }}
 
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
