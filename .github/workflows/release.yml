@@ -31,7 +31,7 @@ jobs:
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.8
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -73,7 +73,7 @@ jobs:
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.8
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
@@ -115,7 +115,7 @@ jobs:
       - name: Automatic Rebase
         uses: cirrus-actions/rebase@1.8
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Version
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
