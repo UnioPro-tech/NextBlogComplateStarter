@@ -38,7 +38,7 @@ jobs:
         elif echo "$COMMIT_MESSAGE" | grep -q '\[Prepatch]'; then
           echo "::set-output name=bump::prepatch"
         else
-          exit 1;
+          exit 0;
         fi
 
     - name: Bump version and publish
