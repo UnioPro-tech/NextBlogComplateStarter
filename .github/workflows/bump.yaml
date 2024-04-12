@@ -46,4 +46,4 @@ jobs:
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       run: |
         npm version ${{ steps.determine_bump.outputs.bump }}
-        git push --follow-tags
+        git push --follow-tags --force origin
