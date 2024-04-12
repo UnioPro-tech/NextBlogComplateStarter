@@ -1,0 +1,49 @@
+name: Bump Version and Publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  bump_and_publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js and npm
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Determine version bump
+      id: determine_bump
+      run: |
+        COMMIT_MESSAGE=$(git log --format=%B -n 1 $GITHUB_SHA)
+        if echo "$COMMIT_MESSAGE" | grep -q '\[Major\]'; then
+          echo "::set-output name=bump::major"
+        elif echo "$COMMIT_MESSAGE" | grep -q '\[Minor\]'; then
+          echo "::set-output name=bump::minor"
+        elif echo "$COMMIT_MESSAGE" | grep -q '\[Patch]'; then
+          echo "::set-output name=bump::patch"
+        elif echo "$COMMIT_MESSAGE" | grep -q '\[Prerelease]'; then
+          echo "::set-output name=bump::prerelease"
+        elif echo "$COMMIT_MESSAGE" | grep -q '\[Prepatch]'; then
+          echo "::set-output name=bump::prepatch"
+        else
+          exit 1;
+        fi
+
+    - name: Bump version and publish
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      run: |
+        npm version ${{ steps.determine_bump.outputs.bump }}
+        git push --follow-tags
