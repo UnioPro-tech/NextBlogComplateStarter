@@ -22,6 +22,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
 
       - name: Version Get
         run: |
@@ -36,18 +37,12 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          npm version patch
-
-      - name: Del workflow
-        run: |
-          rm -r ./.github
-          git add *
-          git commit -a -m "Del workflow"          
+          npm version patch        
 
       - name: Push changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           git push -u -f origin ${{ github.event.pull_request.head.ref }}
 
@@ -68,6 +63,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
 
       - name: Version Get
         run: |
@@ -83,17 +79,11 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           npm version minor
-
-      - name: Del workflow
-        run: |
-          rm -r ./.github
-          git add *
-          git commit -a -m "Del workflow" 
       
       - name: Push changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           git push -u -f origin ${{ github.event.pull_request.head.ref }}
 
@@ -114,6 +104,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
 
       - name: Version Get
         run: |
@@ -129,16 +120,10 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           npm version major
-          
-      - name: Del workflow
-        run: |
-          rm -r ./.github
-          git add *
-          git commit -a -m "Del workflow" 
       
       - name: Push changes
         if: ${{ env.NPM_VERSION >= env.NPM_NEW_VERSION }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           git push -u -f origin ${{ github.event.pull_request.head.ref }}
